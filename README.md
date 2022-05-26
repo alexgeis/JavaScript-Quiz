@@ -1,6 +1,4 @@
-# 04 Web APIs: Code Quiz
-
-# JavaScript-Quiz
+# JavaScript Quiz
 
 ## Your Task
 
