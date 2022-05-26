@@ -1,21 +1,52 @@
+:root {
+--primary-dark: #000;
+--primary-light: #fff;
+--secondary-light: #f4f4f4;
+}
+
+html {
+  box-sizing: border-box;
+}
+body {
+  max-height: 100vh;
+}
+
 body header,
-body div {
-  border: black 1px solid;
+body div,
+footer {
+  /* border: black 1px solid; */
   padding: 20px auto;
   margin: 0 auto;
   text-align: center;
 }
 
-header {
-  background-color: bisque;
+header,
+.footer {
+  background-color: var(--primary-dark);
+  color: var(--primary-light);
+  padding: 20px 0;
+}
+header a {
+  text-decoration: none;
+  color: var(--primary-light)
 }
 
 div {
   background-color: aquamarine;
+  padding: 30px 0;
+  min-height: 80vh;
+}
+
+#title {
+  width: 70%;
+  margin: 0 auto;
 }
 
 ul {
   margin: 0 auto;
+}
+ul li {
+  list-style: none;
 }
 
 li button {
@@ -27,4 +58,8 @@ li button {
 }
 
 .wrong-text {
+}
+
+.footer {
+  min-height: 12vh;
 }
