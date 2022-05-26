@@ -1,7 +1,5 @@
 # JavaScript Quiz
 
-## Your Task
-
 As a full-stack web developer, you’ll likely be asked to complete a coding assessment&mdash;perhaps as part of an interview process. A typical coding assessment includes both multiple-choice questions and interactive coding challenges.
 
 To help familiarize you with these tests and allow you to use the skills covered, this application is a coding quiz with multiple-choice questions.
