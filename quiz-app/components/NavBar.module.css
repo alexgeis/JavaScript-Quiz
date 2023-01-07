@@ -13,6 +13,7 @@
 .logoWrapper {
 	display: flex;
 	align-items: center;
+	margin: 0 auto;
 	z-index: 1002;
 }
 
@@ -25,7 +26,6 @@
 	padding: 10px 20px;
 	font-weight: 700;
 	font-size: 32px;
-
 	text-shadow: 0 0 var(--whiteColor), 0 1.5em var(--navActiveUnderlineColor);
 	overflow: hidden;
 	transition: 0.4s;
@@ -35,6 +35,7 @@
 }
 
 .nav {
+	visibility: hidden;
 	display: none;
 	box-sizing: border-box;
 }
@@ -66,8 +67,11 @@
 
 @media only screen and (min-width: 600px) {
 	.nav {
+		visibility: visible;
 		display: flex;
 		align-items: center;
-		/* display: none; */
+	}
+	.logoWrapper {
+		margin: 0;
 	}
 }
