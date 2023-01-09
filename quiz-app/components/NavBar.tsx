@@ -3,16 +3,6 @@ import styles from "./NavBar.module.css";
 
 import Link from "next/link";
 
-type Answer = {
-	answerTxt: string;
-	correct: boolean;
-};
-type Question = {
-	technology: string;
-	questionTxt: string;
-	answers: Answer[];
-};
-
 export function NavBar() {
 	const [hamOpen, setHamOpen] = useState(false);
 
@@ -34,31 +24,6 @@ export function NavBar() {
 	const closeMenu = () => {
 		setHamOpen(false);
 	};
-
-	const questions: Question[] = [
-		{
-			technology: "JavaScript",
-			questionTxt: "Who developed Javascript?",
-			answers: [
-				{
-					answerTxt: "Brenden Eich",
-					correct: true,
-				},
-				{
-					answerTxt: "Bill Gates",
-					correct: false,
-				},
-				{
-					answerTxt: "Linus Torvald",
-					correct: false,
-				},
-				{
-					answerTxt: "Ada Lovelace",
-					correct: false,
-				},
-			],
-		},
-	];
 
 	return (
 		<div className={styles.wrapper}>
