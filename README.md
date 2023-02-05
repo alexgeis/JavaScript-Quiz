@@ -43,6 +43,17 @@ Next, I created event listeners and the functions I would need to trigger proces
 
 Finally, I lightly styled the page to help with legibility.
 
+## Roadmap
+
+- [ ] Page structure for question pages
+- [ ] Add Lydia's javascript questions
+- [ ] Update repo name to reflect more coding langauges
+- [ ] Score counter
+- [ ] Submit a question feature
+- [ ] question page
+  - [ ] answer validation styling
+  - [ ] timer
+
 ## Deployment Details
 
 Repo: [JavaScript Coding Quiz - Alex Geis Github](https://github.com/alexgeis/JavaScript-Quiz-Homework)
