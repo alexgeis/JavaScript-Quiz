@@ -1,22 +1,23 @@
 export const cssQs: Question[] = [
 	{
-		questionTxt: "Who developed Javascript?",
+		categories: ["History"],
+		text: "Who developed CSS?",
 		answers: [
 			{
-				answerTxt: "Brenden Eich",
-				correct: true,
+				text: "Brenden Eich",
+				isCorrect: true,
 			},
 			{
-				answerTxt: "Bill Gates",
-				correct: false,
+				text: "Bill Gates",
+				isCorrect: false,
 			},
 			{
-				answerTxt: "Linus Torvald",
-				correct: false,
+				text: "Linus Torvald",
+				isCorrect: false,
 			},
 			{
-				answerTxt: "Ada Lovelace",
-				correct: false,
+				text: "Ada Lovelace",
+				isCorrect: false,
 			},
 		],
 	},

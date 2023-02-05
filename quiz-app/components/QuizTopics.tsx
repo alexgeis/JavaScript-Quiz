@@ -1,18 +1,17 @@
 import styles from "./QuizTopics.module.css";
 import Link from "next/link";
-
-const data: string[] = ["aws", "JavaScript", "http", "Python", "Java"];
+import { allTopicNames } from "../data/helpers/extractViewData";
 
 function QuizTopics() {
 	return (
 		<section className={styles.wrapper}>
-			{data.map((data, index) => {
+			{allTopicNames.map((name, index) => {
 				return (
 					<Link
 						key={index}
-						href={`/${data.toLowerCase()}`}
+						href={`/${name.toLowerCase()}`}
 					>
-						<p className={styles.topicName}>{data}</p>
+						<p className={styles.topicName}>{name}</p>
 					</Link>
 				);
 			})}
