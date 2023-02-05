@@ -1,6 +1,6 @@
 export const javascriptQs: Question[] = [
 	{
-		category: "History",
+		categories: ["History"],
 		text: "Who developed Javascript?",
 		answers: [
 			{

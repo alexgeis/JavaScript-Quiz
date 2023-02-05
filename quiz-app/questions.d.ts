@@ -3,7 +3,7 @@ type Topic = {
 	questions: Question[];
 };
 type Question = {
-	category: string;
+	categories: string[];
 	text: string;
 	answers: Answer[];
 };
@@ -12,9 +12,9 @@ type Answer = {
 	isCorrect: boolean;
 };
 
-type ViewData = {
+type TopicViewData = {
 	topicName: string;
 	questionsLength: number;
-	categories: string[];
+	categories: string[][];
 	questions: Question[];
 };
