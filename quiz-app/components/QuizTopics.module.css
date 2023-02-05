@@ -1,0 +1,30 @@
+.wrapper {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(375px, 1fr));
+	gap: 1rem;
+}
+
+.topicName {
+	width: 100%;
+	height: 60px;
+	background-color: aqua;
+	color: mediumpurple;
+	font-size: 1.3rem;
+	border-radius: 10px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: relative;
+	-webkit-transition: -webkit-transform 0.05s;
+	transition: -webkit-transform 0.05s;
+	transition: transform 0.05s;
+	transition: transform 0.05s, -webkit-transform 0.05s;
+}
+
+@media screen and (max-width: 600px) {
+	.wrapper {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 1rem;
+	}
+}
