@@ -11,10 +11,3 @@ type Answer = {
 	text: string;
 	isCorrect: boolean;
 };
-
-type TopicViewData = {
-	topicName: string;
-	questionsLength: number;
-	categories: string[][];
-	questions: Question[];
-};

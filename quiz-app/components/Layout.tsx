@@ -15,7 +15,6 @@ export default function Layout({ children }: LayoutProps) {
 	const [topic, setTopic] = useState<string>(
 		"Take a quiz - test your knowledge"
 	);
-	console.log("state", topic);
 	const [subText, setSubText] = useState<string>(
 		"Questions are sorted by category"
 	);
