@@ -1,7 +1,6 @@
 import Head from "next/head";
 import Image from "next/image";
 import { Inter } from "@next/font/google";
-import { NavBar } from "../components/NavBar";
 import { Header } from "../components/Header";
 import { QuizTopics } from "../components/QuizTopics";
 import styles from "../styles/Home.module.css";
@@ -26,7 +25,6 @@ export default function Home() {
 					href="/favicon.ico"
 				/>
 			</Head>
-			<NavBar />
 			<Header />
 			<QuizTopics />
 			{/* <main className={styles.main}>

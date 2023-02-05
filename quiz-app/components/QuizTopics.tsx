@@ -10,7 +10,7 @@ function QuizTopics() {
 				return (
 					<Link
 						key={index}
-						href={`/${data}`}
+						href={`/${data.toLowerCase()}`}
 					>
 						<p className={styles.topicName}>{data}</p>
 					</Link>
