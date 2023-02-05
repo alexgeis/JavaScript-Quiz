@@ -1,10 +1,15 @@
 import styles from "./Header.module.css";
 
-function Header() {
+type HeaderProps = {
+	mainText: string;
+	subText: string;
+};
+
+function Header({ mainText, subText }: HeaderProps) {
 	return (
 		<header className={styles.wrapper}>
-			<h1>Main text element</h1>
-			<h2>subheader</h2>
+			<h1>{mainText}</h1>
+			<h2>{subText}</h2>
 		</header>
 	);
 }
