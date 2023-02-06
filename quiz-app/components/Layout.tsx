@@ -6,32 +6,34 @@ import styles from "Layout.module.css";
 import { NavBar } from "./NavBar";
 import { Header } from "./Header";
 import { Footer } from "./Footer";
+// import { TopicContext } from "./TopicContext";
+import { TopicProvider } from "./TopicContext";
 
 type LayoutProps = {
 	children: React.ReactNode;
 };
 
 export default function Layout({ children }: LayoutProps) {
-	const [topic, setTopic] = useState<string>(
-		"Take a quiz - test your knowledge"
-	);
-	const [subText, setSubText] = useState<string>(
-		"Questions are sorted by category"
-	);
+	// const [topic, setTopic] = useState<string>(
+	// 	"Take a quiz - test your knowledge"
+	// );
+	// const [subText, setSubText] = useState<string>(
+	// 	"Questions are sorted by category"
+	// );
 
 	const router = useRouter();
 	const currentUrlPath = router.pathname.replace(/\//, "");
 
-	useEffect(() => {
-		if (currentUrlPath !== "") setTopic(currentUrlPath);
-		else {
-			setTopic("Take a quiz - test your knowledge");
-			setSubText("Questions are sorted by category");
-		}
-	}, [currentUrlPath]);
+	// useEffect(() => {
+	// 	if (currentUrlPath !== "") setTopic(currentUrlPath);
+	// 	else {
+	// 		setTopic("Take a quiz - test your knowledge");
+	// 		setSubText("Questions are sorted by category");
+	// 	}
+	// }, [currentUrlPath]);
 
 	return (
-		<>
+		<TopicProvider>
 			<Head>
 				<title>DevTrain</title>
 				<meta
@@ -49,11 +51,14 @@ export default function Layout({ children }: LayoutProps) {
 			</Head>
 			<NavBar />
 			<Header
-				mainText={topic}
-				subText={subText}
+				mainText={""}
+				subText={""}
 			/>
-			<main>{children}</main>
+			<main>
+				{children}
+				{/* <TopicContext.Provider value={topic}>{children}</TopicContext.Provider> */}
+			</main>
 			<Footer />
-		</>
+		</TopicProvider>
 	);
 }
