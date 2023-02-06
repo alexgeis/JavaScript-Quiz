@@ -11,6 +11,10 @@ export function TopicProvider({ children }: any) {
 		"Questions are sorted by category"
 	);
 
+	const [topicQuestions, setTopicQuestions] = useState<Question[]>([
+		{ categories: [""], text: "", answers: [{ text: "", isCorrect: false }] },
+	]);
+
 	return (
 		<TopicContext.Provider
 			value={{
@@ -18,6 +22,8 @@ export function TopicProvider({ children }: any) {
 				setTopic,
 				subText,
 				setSubText,
+				topicQuestions,
+				setTopicQuestions,
 			}}
 		>
 			{children}

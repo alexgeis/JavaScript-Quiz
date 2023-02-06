@@ -7,7 +7,7 @@ import { NavBar } from "./NavBar";
 import { Header } from "./Header";
 import { Footer } from "./Footer";
 // import { TopicContext } from "./TopicContext";
-import { TopicProvider, useTopic } from "./TopicContext";
+import { useTopic } from "../context/TopicContext";
 
 type LayoutProps = {
 	children: React.ReactNode;
