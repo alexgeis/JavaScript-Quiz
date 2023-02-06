@@ -9,10 +9,9 @@ const emptyTopic: Topic = {
 	questions: [],
 };
 export const getTopicData = (topicName: string): Topic => {
-	const matchesTopicName = (topic: Topic): void => {
-		topic.text.toLowerCase() === topicName.toLowerCase();
-	};
-	const result: Topic | undefined = quizDB.find(matchesTopicName);
+	const result: Topic | undefined = quizDB.find(
+		(topic) => topic.text.toLowerCase() === topicName.toLowerCase()
+	);
 	return result !== undefined ? result : emptyTopic;
 };
 
