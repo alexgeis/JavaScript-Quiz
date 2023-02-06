@@ -1,39 +1,34 @@
 "use client";
 import { ReactNode, useState, useEffect } from "react";
 import Head from "next/head";
-import { useRouter } from "next/router";
+import { NextRouter, useRouter } from "next/router";
 import styles from "Layout.module.css";
 import { NavBar } from "./NavBar";
 import { Header } from "./Header";
 import { Footer } from "./Footer";
 // import { TopicContext } from "./TopicContext";
-import { TopicProvider } from "./TopicContext";
+import { TopicProvider, useTopic } from "./TopicContext";
 
 type LayoutProps = {
 	children: React.ReactNode;
 };
 
 export default function Layout({ children }: LayoutProps) {
-	// const [topic, setTopic] = useState<string>(
-	// 	"Take a quiz - test your knowledge"
-	// );
-	// const [subText, setSubText] = useState<string>(
-	// 	"Questions are sorted by category"
-	// );
+	const { topic, setTopic, subText, setSubText } = useTopic();
 
-	const router = useRouter();
-	const currentUrlPath = router.pathname.replace(/\//, "");
+	const router: NextRouter = useRouter();
+	const currentUrlPath: string = router.pathname.replace(/\//, "");
 
-	// useEffect(() => {
-	// 	if (currentUrlPath !== "") setTopic(currentUrlPath);
-	// 	else {
-	// 		setTopic("Take a quiz - test your knowledge");
-	// 		setSubText("Questions are sorted by category");
-	// 	}
-	// }, [currentUrlPath]);
+	useEffect(() => {
+		if (currentUrlPath !== "") setTopic(currentUrlPath);
+		else {
+			setTopic("Take a quiz - test your knowledge");
+			setSubText("Questions are sorted by category");
+		}
+	}, [currentUrlPath, setTopic, setSubText]);
 
 	return (
-		<TopicProvider>
+		<>
 			<Head>
 				<title>DevTrain</title>
 				<meta
@@ -51,14 +46,14 @@ export default function Layout({ children }: LayoutProps) {
 			</Head>
 			<NavBar />
 			<Header
-				mainText={""}
-				subText={""}
+				mainText={topic}
+				subText={subText}
 			/>
 			<main>
 				{children}
 				{/* <TopicContext.Provider value={topic}>{children}</TopicContext.Provider> */}
 			</main>
 			<Footer />
-		</TopicProvider>
+		</>
 	);
 }
