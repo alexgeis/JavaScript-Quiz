@@ -24,6 +24,8 @@ function JavascriptPage() {
 			<Questions
 				questionTxt={topicQuestions[index].text}
 				answers={topicQuestions[index].answers}
+				index={index + 1}
+				questionsLength={topicQuestions.length}
 			/>
 		</>
 	);

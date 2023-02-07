@@ -21,4 +21,26 @@ export const javascriptQs: Question[] = [
 			},
 		],
 	},
+	{
+		categories: ["Assignment"],
+		text: "Which of these is an assignment operator?",
+		answers: [
+			{
+				text: "!==",
+				isCorrect: false,
+			},
+			{
+				text: "===",
+				isCorrect: false,
+			},
+			{
+				text: "==",
+				isCorrect: false,
+			},
+			{
+				text: "=",
+				isCorrect: true,
+			},
+		],
+	},
 ];

@@ -3,24 +3,43 @@ import styles from "./Questions.module.css";
 type QuestionProps = {
 	questionTxt: string;
 	answers: Answer[];
+	index: number;
+	questionsLength: number;
 };
 
-export default function Questions({ questionTxt, answers }: QuestionProps) {
+export default function Questions({
+	questionTxt,
+	answers,
+	index,
+	questionsLength,
+}: QuestionProps) {
 	const handleCorrect = () => {
 		alert("Correct!");
 	};
 	const handleIncorrect = () => {
 		alert("Incorrect!");
 	};
+
+	const progressPercent: number = (index / questionsLength) * 100;
+
 	return (
 		<section>
 			<div>
-				<p>question progress</p>
-				<div>progress bar visual</div>
+				<p>
+					Question {index} of {questionsLength}
+				</p>
+				<div className={styles.questionProgress}>
+					<div
+						className={styles.questionProgressCurrent}
+						style={{
+							width: `${progressPercent}%`,
+						}}
+					></div>
+					<div className={styles.questionProgressTotal}></div>
+				</div>
 			</div>
 			<div>
 				<p>{questionTxt}</p>
-				{/* map through answers */}
 				{answers.map((answer: Answer, i: number) => {
 					if (answer.isCorrect) {
 						return (
