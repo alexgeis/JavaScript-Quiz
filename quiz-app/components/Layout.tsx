@@ -1,12 +1,10 @@
 "use client";
-import { ReactNode, useState, useEffect } from "react";
+import { useEffect } from "react";
 import Head from "next/head";
 import { NextRouter, useRouter } from "next/router";
-import styles from "Layout.module.css";
 import { NavBar } from "./NavBar";
 import { Header } from "./Header";
 import { Footer } from "./Footer";
-// import { TopicContext } from "./TopicContext";
 import { useTopic } from "../context/TopicContext";
 
 type LayoutProps = {

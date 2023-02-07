@@ -1,5 +1,4 @@
-import { useContext, useEffect } from "react";
-// import { TopicContext } from "../../components/TopicContext";
+import { useContext, useEffect, useState } from "react";
 import { useTopic } from "../../context/TopicContext";
 import { getTopicData } from "../../data/helpers/extractViewData";
 import Questions from "../../components/Questions";
@@ -18,20 +17,13 @@ function JavascriptPage() {
 		getTopicDataAsync();
 	});
 
-	console.log("questions", topicQuestions[0]);
+	const [index, setIndex] = useState<number>(0);
+
 	return (
 		<>
-			<div>Welcome to the Javascript Quiz Page!</div>
-			{/* <Questions
-				questionTxt={"question text"}
-				answers={[
-					{ text: "Answer 1", isCorrect: false },
-					{ text: "Answer 2", isCorrect: true },
-				]}
-			/> */}
 			<Questions
-				questionTxt={topicQuestions[0].text}
-				answers={topicQuestions[0].answers}
+				questionTxt={topicQuestions[index].text}
+				answers={topicQuestions[index].answers}
 			/>
 		</>
 	);
