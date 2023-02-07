@@ -1,6 +1,7 @@
 import { useState } from "react";
 import styles from "./NavBar.module.css";
-
+import trainLogo from "../assets/icons/nav/train-logo.png";
+import Image from "next/image";
 import Link from "next/link";
 
 export function NavBar() {
@@ -32,6 +33,11 @@ export function NavBar() {
 					href="/"
 					className={styles.logo}
 				>
+					<Image
+						src={trainLogo}
+						alt="train logo"
+						className={styles.logoImage}
+					/>
 					DevTrain
 				</a>
 			</div>
