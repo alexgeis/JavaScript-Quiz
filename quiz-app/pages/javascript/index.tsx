@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useTopic } from "../../context/TopicContext";
 import { getTopicData } from "../../data/helpers/extractViewData";
 import { shuffleArray } from "../../data/helpers/shuffleArray";
@@ -8,28 +8,28 @@ function JavascriptPage() {
 	const { topic, setTopic, setSubText, topicQuestions, setTopicQuestions } =
 		useTopic();
 
-	useEffect((): void => {
-		setTopic("JavaScript");
-	});
+	// useEffect((): void => {
+	// 	setTopic(pageTopic);
+	// });
+	console.log("topic check 1", topic);
 
 	useEffect((): void => {
-		const getTopicDataAsync = () => {
+		setSubText("Choose an answer below");
+
+		const fetchTopicData = async () => {
 			try {
-				const { questions } = getTopicData(topic);
-				// setTopic(text);
+				console.log("topic check 2", topic);
+				const { questions } = await getTopicData(topic);
 
-				// const shuffledArray = shuffleArray(questions);
-				// console.log(shuffledArray);
-				// setTopicQuestions(shuffledArray);
+				const shuffledArray = shuffleArray(questions);
 
-				setTopicQuestions(questions);
-				setSubText("Choose an answer below");
+				setTopicQuestions(shuffledArray);
 			} catch (error) {
 				console.error(error);
 			}
 		};
-		getTopicDataAsync();
-	});
+		fetchTopicData();
+	}, [topic]);
 
 	const [index, setIndex] = useState<number>(0);
 
