@@ -1,18 +1,18 @@
 import { quizDB } from "../_quizDB";
 
 export const allTopicNames: string[] = quizDB.map(
-	(topic: Topic): string => topic.text
+	(topic: Topic): string => topic.name
 );
 
 const emptyTopic: Topic = {
-	text: "No Topic",
+	name: "No Topic",
 	questions: [],
 };
 // Promise<Topic>
 export const getTopicData = (topicName: string): Promise<Topic> => {
 	return new Promise((resolve, reject) => {
 		const result: Topic | undefined = quizDB.find(
-			(topic) => topic.text.toLowerCase() === topicName.toLowerCase()
+			(topic) => topic.name.toLowerCase() === topicName.toLowerCase()
 		);
 		console.log("result", result);
 		if (result) resolve(result);
@@ -20,7 +20,7 @@ export const getTopicData = (topicName: string): Promise<Topic> => {
 	});
 
 	// const result: Topic | undefined = quizDB.find((topic: Topic): boolean => {
-	// 	const lowerTopic: string = topic.text.toLowerCase();
+	// 	const lowerTopic: string = topic.name.toLowerCase();
 	// 	const lowerInput: string = topicName.toLowerCase();
 	// 	console.log("quizDB topic", lowerTopic);
 	// 	console.log("input", lowerInput);

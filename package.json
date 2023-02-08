@@ -1,21 +1,21 @@
 {
-  "name": "javascript-quiz",
-  "version": "1.0.0",
-  "description": "As a full-stack web developer, you’ll likely be asked to complete a coding assessment&mdash;perhaps as part of an interview process. A typical coding assessment includes both multiple-choice questions and interactive coding challenges.",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "cd quiz-app && npm run dev"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/alexgeis/JavaScript-Quiz.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/alexgeis/JavaScript-Quiz/issues"
-  },
-  "homepage": "https://github.com/alexgeis/JavaScript-Quiz#readme"
+	"name": "dev-train",
+	"version": "1.0.0",
+	"description": "Quiz application for programmers",
+	"main": "index.tsx",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"start": "cd quiz-app && npm run dev"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/alexgeis/JavaScript-Quiz.git"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/alexgeis/JavaScript-Quiz/issues"
+	},
+	"homepage": "https://github.com/alexgeis/JavaScript-Quiz#readme"
 }

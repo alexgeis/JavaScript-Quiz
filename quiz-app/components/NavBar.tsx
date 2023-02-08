@@ -3,9 +3,18 @@ import styles from "./NavBar.module.css";
 import trainLogo from "../assets/icons/nav/train-logo.png";
 import Image from "next/image";
 import Link from "next/link";
+import { useTopic } from "../context/TopicContext";
 
 export function NavBar() {
 	const [hamOpen, setHamOpen] = useState(false);
+	const hamburgerMenuToggle = () => {
+		setHamOpen(!hamOpen);
+	};
+	const closeMenu = () => {
+		setHamOpen(false);
+	};
+
+	const { setTopic } = useTopic();
 
 	//TODO: update with better type
 	const navLinkHandler = ({ currentTarget }: any) => {
@@ -18,20 +27,13 @@ export function NavBar() {
 		//     setFilter([...filteredArray]);
 		// }
 	};
-
-	const hamburgerMenuToggle = () => {
-		setHamOpen(!hamOpen);
-	};
-	const closeMenu = () => {
-		setHamOpen(false);
-	};
-
 	return (
 		<div className={styles.wrapper}>
 			<div className={styles.logoWrapper}>
-				<a
+				<Link
 					href="/"
 					className={styles.logo}
+					onClick={() => setTopic("")}
 				>
 					<Image
 						src={trainLogo}
@@ -39,7 +41,7 @@ export function NavBar() {
 						className={styles.logoImage}
 					/>
 					DevTrain
-				</a>
+				</Link>
 			</div>
 			<div className={styles.nav}>
 				<Link

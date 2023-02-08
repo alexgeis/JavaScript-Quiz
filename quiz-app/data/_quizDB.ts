@@ -5,13 +5,13 @@ import { cssQs } from "./topics/css";
 // import { reactQs } from "./react";
 
 export const quizDB: Topic[] = [
-	{ text: "JavaScript", questions: [...javascriptQs] },
-	{ text: "CSS", questions: [...cssQs] },
+	{ name: "JavaScript", questions: [...javascriptQs] },
+	{ name: "CSS", questions: [...cssQs] },
 ];
 
 // TOPIC OBJECT
 // {
-// 	text: string;
+// 	name: string;
 // 	questions: [
 // 		{
 // 			categories: string[];

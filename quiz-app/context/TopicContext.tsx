@@ -3,13 +3,9 @@ import { createContext, useContext, useState } from "react";
 const TopicContext = createContext<any>(undefined);
 
 export function TopicProvider({ children }: any) {
-	const [topic, setTopic] = useState<string>(
-		"Take a quiz - test your knowledge"
-	);
+	const [topic, setTopic] = useState<string>("");
 
-	const [topicQuestions, setTopicQuestions] = useState<Question[]>([
-		{ categories: [""], text: "", answers: [{ text: "", isCorrect: false }] },
-	]);
+	const [topicQuestions, setTopicQuestions] = useState<Question[] | []>([]);
 
 	const [subText, setSubText] = useState<string>(
 		"Questions are sorted by category"

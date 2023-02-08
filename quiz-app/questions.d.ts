@@ -1,5 +1,5 @@
 type Topic = {
-	text: string;
+	name: string;
 	questions: Question[];
 };
 type Question = {

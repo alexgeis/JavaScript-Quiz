@@ -17,19 +17,18 @@ export default function Layout({ children }: LayoutProps) {
 	const router: NextRouter = useRouter();
 	const currentUrlPath: string = router.pathname.replace(/\//, "");
 
-	console.log(currentUrlPath);
-	useEffect(() => {
-		if (currentUrlPath !== "") {
-			setTopic(currentUrlPath);
-		} else {
-			setTopic("Take a quiz - test your knowledge");
-		}
-	}, [currentUrlPath, setTopic, setSubText]);
+	// useEffect(() => {
+	// 	if (currentUrlPath! == "") {
+	// 		setTopic(currentUrlPath);
+	// 	} else {
+	// 		setTopic("Take a quiz - test your knowledge");
+	// 	}
+	// }, [currentUrlPath, setTopic, setSubText]);
 
 	useEffect(() => {
 		if (currentUrlPath !== "") setSubText("Choose an answer below");
 		else setSubText("Questions are sorted by category");
-	}, [topic]);
+	}, [currentUrlPath]);
 
 	return (
 		<>
@@ -50,7 +49,7 @@ export default function Layout({ children }: LayoutProps) {
 			</Head>
 			<NavBar />
 			<Header
-				mainText={topic}
+				mainText={topic === "" ? "Take a quiz - test your knowledge" : topic}
 				subText={subText}
 			/>
 			<main>
