@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { useTopic } from "../../context/TopicContext";
 import { getTopicData } from "../../data/helpers/extractViewData";
+import { shuffleArray } from "../../data/helpers/shuffleArray";
 import Questions from "../../components/Questions";
 
 function JavascriptPage() {
@@ -8,11 +9,24 @@ function JavascriptPage() {
 		useTopic();
 
 	useEffect((): void => {
-		const getTopicDataAsync = async () => {
-			const { text, questions } = await getTopicData(topic);
-			setTopic(text);
-			setTopicQuestions(questions);
-			setSubText("Choose an answer below");
+		setTopic("JavaScript");
+	});
+
+	useEffect((): void => {
+		const getTopicDataAsync = () => {
+			try {
+				const { questions } = getTopicData(topic);
+				// setTopic(text);
+
+				// const shuffledArray = shuffleArray(questions);
+				// console.log(shuffledArray);
+				// setTopicQuestions(shuffledArray);
+
+				setTopicQuestions(questions);
+				setSubText("Choose an answer below");
+			} catch (error) {
+				console.error(error);
+			}
 		};
 		getTopicDataAsync();
 	});
@@ -22,10 +36,10 @@ function JavascriptPage() {
 	return (
 		<>
 			<Questions
-				questionTxt={topicQuestions[index].text}
-				answers={topicQuestions[index].answers}
+				questionTxt={topicQuestions[index]?.text || "No question text"}
+				answers={topicQuestions[index]?.answers || []}
 				index={index + 1}
-				questionsLength={topicQuestions.length}
+				questionsLength={topicQuestions.length || 1}
 			/>
 		</>
 	);
