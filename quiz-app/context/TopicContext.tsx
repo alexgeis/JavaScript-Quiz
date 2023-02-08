@@ -1,4 +1,5 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
+import { getTopicData } from "../data/helpers/extractViewData";
 
 const TopicContext = createContext<any>(undefined);
 
@@ -11,7 +12,25 @@ export function TopicProvider({ children }: any) {
 		"Questions are sorted by category"
 	);
 
-	const [prevTopics, setPrevTopics] = useState<PrevTopic | []>([]);
+	const [prevTopics, setPrevTopics] = useState<PrevTopic[] | []>([]);
+
+	useEffect(() => {
+		const topicExists = prevTopics.find(
+			(prevTopic) => prevTopic.name.toLowerCase() === topic.toLowerCase()
+		);
+
+		if (!topicExists) {
+			const topicData = getTopicData(topic);
+			setPrevTopics([
+				...prevTopics,
+				{
+					name: topicData.name,
+					questions: topicData.questions,
+					currQuesIndex: 0,
+				},
+			]);
+		}
+	}, [topic]);
 
 	return (
 		<TopicContext.Provider

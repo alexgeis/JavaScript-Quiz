@@ -13,7 +13,7 @@ type Answer = {
 };
 
 type PrevTopic = {
-	text: string;
+	name: string;
 	questions: Question[];
 	currQuesIndex: number;
 };
