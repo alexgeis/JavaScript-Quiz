@@ -7,13 +7,15 @@ export function TopicProvider({ children }: any) {
 		"Take a quiz - test your knowledge"
 	);
 
+	const [topicQuestions, setTopicQuestions] = useState<Question[]>([
+		{ categories: [""], text: "", answers: [{ text: "", isCorrect: false }] },
+	]);
+
 	const [subText, setSubText] = useState<string>(
 		"Questions are sorted by category"
 	);
 
-	const [topicQuestions, setTopicQuestions] = useState<Question[]>([
-		{ categories: [""], text: "", answers: [{ text: "", isCorrect: false }] },
-	]);
+	const [prevTopics, setPrevTopics] = useState<PrevTopic | []>([]);
 
 	return (
 		<TopicContext.Provider
@@ -24,6 +26,8 @@ export function TopicProvider({ children }: any) {
 				setSubText,
 				topicQuestions,
 				setTopicQuestions,
+				prevTopics,
+				setPrevTopics,
 			}}
 		>
 			{children}

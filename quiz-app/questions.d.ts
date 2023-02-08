@@ -11,3 +11,9 @@ type Answer = {
 	text: string;
 	isCorrect: boolean;
 };
+
+type PrevTopic = {
+	text: string;
+	questions: Question[];
+	currQuesIndex: number;
+};

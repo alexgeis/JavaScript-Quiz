@@ -17,15 +17,19 @@ export default function Layout({ children }: LayoutProps) {
 	const router: NextRouter = useRouter();
 	const currentUrlPath: string = router.pathname.replace(/\//, "");
 
+	console.log(currentUrlPath);
 	useEffect(() => {
 		if (currentUrlPath !== "") {
 			setTopic(currentUrlPath);
-			setSubText("Choose an answer below");
 		} else {
 			setTopic("Take a quiz - test your knowledge");
-			setSubText("Questions are sorted by category");
 		}
 	}, [currentUrlPath, setTopic, setSubText]);
+
+	useEffect(() => {
+		if (currentUrlPath !== "") setSubText("Choose an answer below");
+		else setSubText("Questions are sorted by category");
+	}, [topic]);
 
 	return (
 		<>
