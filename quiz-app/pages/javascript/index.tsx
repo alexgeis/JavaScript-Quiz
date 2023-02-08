@@ -10,26 +10,23 @@ function JavascriptPage() {
 
 	// useEffect((): void => {
 	// 	setTopic(pageTopic);
+	// setSubText("Choose an answer below");
 	// });
-	console.log("topic check 1", topic);
 
-	useEffect((): void => {
-		setSubText("Choose an answer below");
+	// useEffect((): void => {
+	// 	const fetchTopicData = async () => {
+	// 		try {
+	// 			const { questions } = await getTopicData(topic);
 
-		const fetchTopicData = async () => {
-			try {
-				console.log("topic check 2", topic);
-				const { questions } = await getTopicData(topic);
+	// 			const shuffledArray = shuffleArray(questions);
 
-				const shuffledArray = shuffleArray(questions);
-
-				setTopicQuestions(shuffledArray);
-			} catch (error) {
-				console.error(error);
-			}
-		};
-		fetchTopicData();
-	}, [topic]);
+	// 			setTopicQuestions(shuffledArray);
+	// 		} catch (error) {
+	// 			console.error(error);
+	// 		}
+	// 	};
+	// 	fetchTopicData();
+	// }, [topic]);
 
 	const [index, setIndex] = useState<number>(0);
 

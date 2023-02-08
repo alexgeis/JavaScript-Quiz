@@ -6,6 +6,14 @@ const TopicContext = createContext<any>(undefined);
 export function TopicProvider({ children }: any) {
 	const [topic, setTopic] = useState<string>("");
 
+	useEffect(() => {
+		setTopic(JSON.parse(window.localStorage.getItem("topic") || ""));
+	}, []);
+
+	useEffect(() => {
+		window.localStorage.setItem("topic", topic);
+	}, [topic]);
+
 	const [topicQuestions, setTopicQuestions] = useState<Question[] | []>([]);
 
 	const [subText, setSubText] = useState<string>(
@@ -30,6 +38,7 @@ export function TopicProvider({ children }: any) {
 				},
 			]);
 		}
+		console.log("prevTopics", prevTopics);
 	}, [topic]);
 
 	return (
