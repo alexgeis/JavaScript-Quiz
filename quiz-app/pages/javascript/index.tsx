@@ -30,6 +30,13 @@ function JavascriptPage() {
 
 	const [index, setIndex] = useState<number>(0);
 
+	const handleNext = () => {
+		setIndex(index + 1);
+	};
+	const handlePrevious = () => {
+		setIndex(index - 1);
+	};
+
 	return (
 		<>
 			<Questions
