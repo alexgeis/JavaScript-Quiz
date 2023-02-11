@@ -37,6 +37,16 @@ function JavascriptPage() {
 		setIndex(index - 1);
 	};
 
+	// PSEUDO
+	// topic change
+	// if new topic, generate the randomized question array and localStorage.setItem(randomArray)
+	// if old topic, fetch previous array
+	// use state index variable to navigate through array
+	// handleCorrect and handleIncorrect should affect index AND total score (correct / total)
+	// store current state (index, score, and question array being used) in localStorage prevTopics data
+	// prevTopics - each question should have parameter/status for tracking user getting the question right or wrong
+	// answer order should be randomized (each time question comes up? - I think preferable to with each new shuffle of the question array)
+
 	return (
 		<>
 			<Questions
