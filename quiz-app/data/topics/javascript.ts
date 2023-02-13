@@ -1,5 +1,6 @@
 export const javascriptQs: Question[] = [
 	{
+		id: self.crypto.randomUUID(),
 		categories: ["History"],
 		text: "Who developed Javascript?",
 		answers: [
@@ -22,6 +23,7 @@ export const javascriptQs: Question[] = [
 		],
 	},
 	{
+		id: self.crypto.randomUUID(),
 		categories: ["Assignment"],
 		text: "Which of these is an assignment operator?",
 		answers: [

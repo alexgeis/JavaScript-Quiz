@@ -3,6 +3,7 @@ type Topic = {
 	questions: Question[];
 };
 type Question = {
+	id: string;
 	categories: string[];
 	text: string;
 	answers: Answer[];
