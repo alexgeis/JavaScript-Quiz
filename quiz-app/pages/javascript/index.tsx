@@ -44,6 +44,7 @@ function JavascriptPage() {
 	// use state index variable to navigate through array
 	// handleCorrect and handleIncorrect should affect index AND total score (correct / total)
 	// store current state (index, score, and question array being used) in localStorage prevTopics data
+	// 		store by id for each question, not the full question
 	// prevTopics - each question should have parameter/status for tracking user getting the question right or wrong
 	// answer order should be randomized (each time question comes up? - I think preferable to with each new shuffle of the question array)
 
