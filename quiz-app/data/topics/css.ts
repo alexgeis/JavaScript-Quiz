@@ -1,5 +1,6 @@
 export const cssQs: Question[] = [
 	{
+		id: self.crypto.randomUUID(),
 		categories: ["History"],
 		text: "Who developed CSS?",
 		answers: [
