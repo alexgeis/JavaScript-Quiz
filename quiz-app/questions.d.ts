@@ -16,6 +16,6 @@ type Answer = {
 
 type PrevTopic = {
 	name: string;
-	questions: string[];
+	questionIds: string[];
 	currQuesIndex: number;
 };

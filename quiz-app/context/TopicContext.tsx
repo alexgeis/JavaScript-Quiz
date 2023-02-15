@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { getTopicData } from "../data/helpers/extractViewData";
+import { shuffleArray } from "../data/helpers/shuffleArray";
 
 const TopicContext = createContext<any>(undefined);
 
@@ -14,19 +15,34 @@ export function TopicProvider({ children }: any) {
 
 	const [topicQuestions, setTopicQuestions] = useState<Question[] | []>([]);
 
-	const [subText, setSubText] = useState<string>(
-		"Questions are sorted by category"
+	const [prevTopics, setPrevTopics] = useState<PrevTopic[] | []>(
+		JSON.parse(localStorage.getItem("prevTopics") ?? "")
 	);
 
-	const [prevTopics, setPrevTopics] = useState<PrevTopic[] | []>([]);
-
+	// change topic
+	// if new topic
+	// 		generate random question array
+	//		localStorage - setItem() - random question array IDs
+	// else if old topic
+	//		fetch randomized question array
+	//		use current index to display current question
 	useEffect(() => {
 		const topicExists = prevTopics.find(
 			(prevTopic) => prevTopic.name.toLowerCase() === topic.toLowerCase()
 		);
 
 		if (!topicExists) {
-			const topicData = getTopicData(topic);
+			// update current topic question state
+			const topicData: Topic = getTopicData(topic);
+			// RANDOMIZE
+			const randomQuestions: Question[] = shuffleArray(topicData.questions);
+			setTopicQuestions(randomQuestions);
+
+			// push to previous topics array
+			const questionIds: string[] = randomQuestions.map(
+				(question) => question.id
+			);
+
 			// setPrevTopics([
 			// 	...prevTopics,
 			// 	{
@@ -44,8 +60,6 @@ export function TopicProvider({ children }: any) {
 			value={{
 				topic,
 				setTopic,
-				subText,
-				setSubText,
 				topicQuestions,
 				setTopicQuestions,
 				prevTopics,
