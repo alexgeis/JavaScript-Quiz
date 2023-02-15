@@ -12,23 +12,10 @@ type LayoutProps = {
 };
 
 export default function Layout({ children }: LayoutProps) {
-	const { topic, setTopic, subText, setSubText } = useTopic();
+	const { topic, setTopic } = useTopic();
 
 	const router: NextRouter = useRouter();
 	const currentUrlPath: string = router.pathname.replace(/\//, "");
-
-	// useEffect(() => {
-	// 	if (currentUrlPath! == "") {
-	// 		setTopic(currentUrlPath);
-	// 	} else {
-	// 		setTopic("Take a quiz - test your knowledge");
-	// 	}
-	// }, [currentUrlPath, setTopic, setSubText]);
-
-	useEffect(() => {
-		if (currentUrlPath !== "") setSubText("Choose an answer below");
-		else setSubText("Questions are sorted by category");
-	}, [currentUrlPath]);
 
 	return (
 		<>
@@ -50,7 +37,9 @@ export default function Layout({ children }: LayoutProps) {
 			<NavBar />
 			<Header
 				mainText={topic === "" ? "Take a quiz - test your knowledge" : topic}
-				subText={subText}
+				subText={
+					topic === "" ? "Choose a topic below" : "Choose an answer below"
+				}
 			/>
 			<main>
 				{children}
