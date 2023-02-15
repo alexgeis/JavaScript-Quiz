@@ -7,6 +7,7 @@ type Question = {
 	categories: string[];
 	text: string;
 	answers: Answer[];
+	userCorrect: boolean;
 };
 type Answer = {
 	text: string;

@@ -21,5 +21,6 @@ export const cssQs: Question[] = [
 				isCorrect: false,
 			},
 		],
+		userCorrect: false,
 	},
 ];

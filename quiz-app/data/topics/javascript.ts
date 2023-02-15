@@ -21,6 +21,7 @@ export const javascriptQs: Question[] = [
 				isCorrect: false,
 			},
 		],
+		userCorrect: false,
 	},
 	{
 		id: self.crypto.randomUUID(),
@@ -44,5 +45,6 @@ export const javascriptQs: Question[] = [
 				isCorrect: true,
 			},
 		],
+		userCorrect: false,
 	},
 ];
