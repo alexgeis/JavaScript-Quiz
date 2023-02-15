@@ -19,22 +19,15 @@ export function TopicProvider({ children }: any) {
 		JSON.parse(localStorage.getItem("prevTopics") ?? "")
 	);
 
-	// change topic
-	// if new topic
-	// 		generate random question array
-	//		localStorage - setItem() - random question array IDs
-	// else if old topic
-	//		fetch randomized question array
-	//		use current index to display current question
 	useEffect(() => {
-		const topicExists = prevTopics.find(
+		const prevTopicMatch = prevTopics.find(
 			(prevTopic) => prevTopic.name.toLowerCase() === topic.toLowerCase()
 		);
 
-		if (!topicExists) {
+		const topicData: Topic = getTopicData(topic);
+
+		if (!prevTopicMatch) {
 			// update current topic question state
-			const topicData: Topic = getTopicData(topic);
-			// RANDOMIZE
 			const randomQuestions: Question[] = shuffleArray(topicData.questions);
 			setTopicQuestions(randomQuestions);
 
@@ -43,16 +36,35 @@ export function TopicProvider({ children }: any) {
 				(question) => question.id
 			);
 
-			// setPrevTopics([
-			// 	...prevTopics,
-			// 	{
-			// 		name: topicData.name,
-			// 		questions: topicData.questions,
-			// 		currQuesIndex: 0,
-			// 	},
-			// ]);
+			setPrevTopics([
+				...prevTopics,
+				{
+					name: topic,
+					questionIds: questionIds,
+					currQuesIndex: 0, // TODO: fix this
+				},
+			]);
+		} else {
+			// there is a previous topic with questions already randomized
+			// prevTopicMatch.questionIds = ["123","456"]
+			// map over values
+			// if id is equal to
+			const orderedQuestions = prevTopicMatch.questionIds.map((id) => {
+				for (let i = 0; i < topicData.questions.length; i++) {
+					const question = topicData.questions[i];
+
+					if (question.id == id) return question;
+				}
+				return {
+					id: "",
+					categories: [""],
+					text: "Stored ID does not correspond to a stored question",
+					answers: [{ text: "empty answer", isCorrect: false }],
+					userCorrect: false,
+				};
+			});
+			setTopicQuestions(orderedQuestions);
 		}
-		console.log("prevTopics", prevTopics);
 	}, [topic]);
 
 	return (
