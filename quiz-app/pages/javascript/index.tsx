@@ -38,10 +38,15 @@ function JavascriptPage() {
 	};
 
 	// PSEUDO
-	// topic change
-	// if new topic, generate the randomized question array and localStorage.setItem(randomArray)
-	// if old topic, fetch previous array
-	// use state index variable to navigate through array
+	// user selects topic
+	// topic state updates
+	// 		if new topic, generate the randomized question array
+	//			store ids of random array in localStorage.setItem(randomArray)
+	// 		if old topic, fetch previous array of IDs (with correct status)
+	// 			map over array for question text and answers
+	//			get current question ID
+	// use state index variable to navigate through array (set to whatever current question ID is, if old topic)
+
 	// handleCorrect and handleIncorrect should affect index AND total score (correct / total)
 	// store current state (index, score, and question array being used) in localStorage prevTopics data
 	// 		store by id for each question, not the full question

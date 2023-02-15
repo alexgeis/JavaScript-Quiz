@@ -4,14 +4,12 @@ import { getTopicData } from "../data/helpers/extractViewData";
 const TopicContext = createContext<any>(undefined);
 
 export function TopicProvider({ children }: any) {
-	const [topic, setTopic] = useState<string>("");
-
+	const [topic, setTopic] = useState<string>(
+		JSON.parse(localStorage.getItem("topic") ?? "")
+	);
+	// Persist topic in localStorage
 	useEffect(() => {
-		setTopic(JSON.parse(window.localStorage.getItem("topic") || ""));
-	}, []);
-
-	useEffect(() => {
-		window.localStorage.setItem("topic", topic);
+		localStorage.setItem("topic", topic);
 	}, [topic]);
 
 	const [topicQuestions, setTopicQuestions] = useState<Question[] | []>([]);
@@ -29,14 +27,14 @@ export function TopicProvider({ children }: any) {
 
 		if (!topicExists) {
 			const topicData = getTopicData(topic);
-			setPrevTopics([
-				...prevTopics,
-				{
-					name: topicData.name,
-					questions: topicData.questions,
-					currQuesIndex: 0,
-				},
-			]);
+			// setPrevTopics([
+			// 	...prevTopics,
+			// 	{
+			// 		name: topicData.name,
+			// 		questions: topicData.questions,
+			// 		currQuesIndex: 0,
+			// 	},
+			// ]);
 		}
 		console.log("prevTopics", prevTopics);
 	}, [topic]);
