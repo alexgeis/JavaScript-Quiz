@@ -5,9 +5,12 @@ import { shuffleArray } from "../data/helpers/shuffleArray";
 const TopicContext = createContext<any>(undefined);
 
 export function TopicProvider({ children }: any) {
-	const [topic, setTopic] = useState<string>(
-		JSON.parse(localStorage.getItem("topic") ?? "")
-	);
+	let localStorageTopic: any = "";
+	if (typeof window !== "undefined") {
+		localStorageTopic = JSON.parse(localStorage.getItem("topic") ?? "");
+	}
+
+	const [topic, setTopic] = useState<string>(localStorageTopic);
 	// Persist topic in localStorage
 	useEffect(() => {
 		localStorage.setItem("topic", topic);
@@ -15,8 +18,12 @@ export function TopicProvider({ children }: any) {
 
 	const [topicQuestions, setTopicQuestions] = useState<Question[] | []>([]);
 
+	let localStorageProgress: any = [];
+	if (typeof window !== "undefined") {
+		localStorageProgress = JSON.parse(localStorage.getItem("topic") ?? []);
+	}
 	const [prevTopics, setPrevTopics] = useState<PrevTopic[] | []>(
-		JSON.parse(localStorage.getItem("prevTopics") ?? "")
+		localStorageProgress
 	);
 
 	useEffect(() => {
