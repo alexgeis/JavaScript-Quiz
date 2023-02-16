@@ -19,3 +19,16 @@ type PrevTopic = {
 	questionIds: string[];
 	currQuesIndex: number;
 };
+
+type QuestionRef = {
+	id: string;
+	answered: number;
+	answeredCorrect: number;
+};
+
+type TopicProgress = {
+	topicName: string;
+	questionRefs: QuestionRef[];
+	currQuesIndex: number;
+};
+// PastQuizProgress = TopicProgress[]

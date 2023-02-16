@@ -20,11 +20,16 @@ export function TopicProvider({ children }: any) {
 	);
 
 	useEffect(() => {
+		// if topic select page, ignore
+		if (topic === "") return;
+		// check if the prevTopics state variable includes the new topic
 		const prevTopicMatch = prevTopics.find(
 			(prevTopic) => prevTopic.name.toLowerCase() === topic.toLowerCase()
 		);
 
 		const topicData: Topic = getTopicData(topic);
+
+		// only on pageload of entire app?, map ids of prevTopics localstorage object to questions
 
 		if (!prevTopicMatch) {
 			// update current topic question state
@@ -45,25 +50,21 @@ export function TopicProvider({ children }: any) {
 				},
 			]);
 		} else {
-			// there is a previous topic with questions already randomized
-			// prevTopicMatch.questionIds = ["123","456"]
-			// map over values
-			// if id is equal to
-			const orderedQuestions = prevTopicMatch.questionIds.map((id) => {
-				for (let i = 0; i < topicData.questions.length; i++) {
-					const question = topicData.questions[i];
-
-					if (question.id == id) return question;
-				}
-				return {
-					id: "",
-					categories: [""],
-					text: "Stored ID does not correspond to a stored question",
-					answers: [{ text: "empty answer", isCorrect: false }],
-					userCorrect: false,
-				};
+			const emptyObj = {
+				id: "9999",
+				categories: [""],
+				text: "No question",
+				answers: [{ text: "empty answer", isCorrect: false }],
+				userCorrect: false,
+			};
+			// a lot of logic :(
+			// TODO: do better
+			const questionsFromIds = prevTopicMatch.questionIds.map((id) => {
+				const questionFinder = (question: any) => question.id === id;
+				const question = topicData.questions.find(questionFinder) ?? emptyObj;
+				return question;
 			});
-			setTopicQuestions(orderedQuestions);
+			setTopicQuestions(questionsFromIds);
 		}
 	}, [topic]);
 
