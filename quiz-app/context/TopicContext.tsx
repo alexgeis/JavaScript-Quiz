@@ -1,3 +1,4 @@
+"use client";
 import { createContext, useContext, useEffect, useState } from "react";
 import { getTopicData } from "../data/helpers/extractViewData";
 import { shuffleArray } from "../data/helpers/shuffleArray";
@@ -7,7 +8,7 @@ const TopicContext = createContext<any>(undefined);
 export function TopicProvider({ children }: any) {
 	let localStorageTopic: any = "";
 	if (typeof window !== "undefined") {
-		localStorageTopic = JSON.parse(localStorage.getItem("topic") ?? "");
+		localStorageTopic = JSON.parse(localStorage.getItem("topic") || "");
 	}
 
 	const [topic, setTopic] = useState<string>(localStorageTopic);
@@ -18,9 +19,11 @@ export function TopicProvider({ children }: any) {
 
 	const [topicQuestions, setTopicQuestions] = useState<Question[] | []>([]);
 
+	const items = await JSON.parse(localStorage?.getItem("ChartData") || "{}");
+
 	let localStorageProgress: any = [];
 	if (typeof window !== "undefined") {
-		localStorageProgress = JSON.parse(localStorage.getItem("topic") ?? []);
+		localStorageProgress = JSON.parse(localStorage.getItem("prevTopic") ?? "");
 	}
 	const [prevTopics, setPrevTopics] = useState<PrevTopic[] | []>(
 		localStorageProgress
@@ -99,3 +102,31 @@ export function useTopic() {
 
 	return context;
 }
+
+
+const getLocalStorage = async (
+	key: string,
+	fallbackValue: any
+): Promise<any> => {
+	try {
+		const results = await JSON.parse(
+			localStorage?.getItem(key) || fallbackValue
+		);
+		return results;
+	} catch (error) {
+		console.log(error);
+	}
+};
+
+// const storageResults = getLocalStorage()
+getLocalStorage().then((res) => setItems(res));
+const 
+
+useEffect(() => {
+	const chartData = { chain: "", address: "", dex: "" };
+	if (window.localStorage === undefined) {
+		localStorage.setItem("ChartData", JSON.stringify(chartData));
+	}
+}, []);
+// answer
+const items = await JSON.parse(localStorage?.getItem("ChartData") || "{}");
