@@ -6,23 +6,7 @@ import { shuffleArray } from "../data/helpers/shuffleArray";
 const TopicContext = createContext<any>(undefined);
 
 export function TopicProvider({ children }: any) {
-	// get topic from local storage
-	// let localStorageTopic: any = "";
-	// if (typeof window !== "undefined") {
-	// 	localStorageTopic = JSON.parse(
-	// 		localStorage.getItem("topic") || '{"topic":""}'
-	// 	);
-	// }
-
 	const [topic, setTopic] = useState<string>("");
-	// Persist topic in localStorage
-	// useEffect(() => {
-	// 	if (typeof window !== "undefined") {
-	// 		localStorage.getItem("") ||
-	// 		localStorage.setItem("topic", topic);
-	// 	};
-
-	// }, [topic]);
 
 	// if topic is changed
 	// 	check if topic has already been visited // pull from local storage into a state variable
