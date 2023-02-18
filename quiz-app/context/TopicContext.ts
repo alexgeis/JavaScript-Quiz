@@ -116,30 +116,3 @@ export function useTopic() {
 
 	return context;
 }
-
-// const getLocalStorage = async (
-// 	key: string,
-// 	fallbackValue: any
-// ): Promise<any> => {
-// 	try {
-// 		const results = await JSON.parse(
-// 			localStorage?.getItem(key) || fallbackValue
-// 		);
-// 		return results;
-// 	} catch (error) {
-// 		console.log(error);
-// 	}
-// };
-
-// // const storageResults = getLocalStorage()
-// getLocalStorage().then((res) => setItems(res));
-// const
-
-// useEffect(() => {
-// 	const chartData = { chain: "", address: "", dex: "" };
-// 	if (window.localStorage === undefined) {
-// 		localStorage.setItem("ChartData", JSON.stringify(chartData));
-// 	}
-// }, []);
-// // answer
-// const items = await JSON.parse(localStorage?.getItem("ChartData") || "{}");
