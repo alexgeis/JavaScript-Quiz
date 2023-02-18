@@ -19,8 +19,6 @@ export function TopicProvider({ children }: any) {
 
 	const [topicQuestions, setTopicQuestions] = useState<Question[] | []>([]);
 
-	const items = await JSON.parse(localStorage?.getItem("ChartData") || "{}");
-
 	let localStorageProgress: any = [];
 	if (typeof window !== "undefined") {
 		localStorageProgress = JSON.parse(localStorage.getItem("prevTopic") ?? "");
@@ -103,30 +101,29 @@ export function useTopic() {
 	return context;
 }
 
+// const getLocalStorage = async (
+// 	key: string,
+// 	fallbackValue: any
+// ): Promise<any> => {
+// 	try {
+// 		const results = await JSON.parse(
+// 			localStorage?.getItem(key) || fallbackValue
+// 		);
+// 		return results;
+// 	} catch (error) {
+// 		console.log(error);
+// 	}
+// };
 
-const getLocalStorage = async (
-	key: string,
-	fallbackValue: any
-): Promise<any> => {
-	try {
-		const results = await JSON.parse(
-			localStorage?.getItem(key) || fallbackValue
-		);
-		return results;
-	} catch (error) {
-		console.log(error);
-	}
-};
+// // const storageResults = getLocalStorage()
+// getLocalStorage().then((res) => setItems(res));
+// const
 
-// const storageResults = getLocalStorage()
-getLocalStorage().then((res) => setItems(res));
-const 
-
-useEffect(() => {
-	const chartData = { chain: "", address: "", dex: "" };
-	if (window.localStorage === undefined) {
-		localStorage.setItem("ChartData", JSON.stringify(chartData));
-	}
-}, []);
-// answer
-const items = await JSON.parse(localStorage?.getItem("ChartData") || "{}");
+// useEffect(() => {
+// 	const chartData = { chain: "", address: "", dex: "" };
+// 	if (window.localStorage === undefined) {
+// 		localStorage.setItem("ChartData", JSON.stringify(chartData));
+// 	}
+// }, []);
+// // answer
+// const items = await JSON.parse(localStorage?.getItem("ChartData") || "{}");
