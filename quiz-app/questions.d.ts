@@ -28,7 +28,7 @@ type QuestionRef = {
 
 type TopicProgress = {
 	topicName: string;
-	questionRefs: QuestionRef[];
+	questionRefs: QuestionRef[] | [];
 	currQuesIndex: number;
 };
 // PastQuizProgress = TopicProgress[]

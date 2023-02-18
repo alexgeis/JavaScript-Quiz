@@ -6,12 +6,15 @@ import { shuffleArray } from "../data/helpers/shuffleArray";
 const TopicContext = createContext<any>(undefined);
 
 export function TopicProvider({ children }: any) {
-	let localStorageTopic: any = "";
-	if (typeof window !== "undefined") {
-		localStorageTopic = JSON.parse(localStorage.getItem("topic") || "");
-	}
+	// get topic from local storage
+	// let localStorageTopic: any = "";
+	// if (typeof window !== "undefined") {
+	// 	localStorageTopic = JSON.parse(
+	// 		localStorage.getItem("topic") || '{"topic":""}'
+	// 	);
+	// }
 
-	const [topic, setTopic] = useState<string>(localStorageTopic);
+	const [topic, setTopic] = useState<string>("");
 	// Persist topic in localStorage
 	useEffect(() => {
 		localStorage.setItem("topic", topic);
@@ -21,7 +24,10 @@ export function TopicProvider({ children }: any) {
 
 	let localStorageProgress: any = [];
 	if (typeof window !== "undefined") {
-		localStorageProgress = JSON.parse(localStorage.getItem("prevTopic") ?? "");
+		localStorageProgress = JSON.parse(
+			localStorage.getItem("userQuizProgress") ??
+				'{"topicName":"","questionRefs":"[]","currQuesIndex":"0"}'
+		);
 	}
 	const [prevTopics, setPrevTopics] = useState<PrevTopic[] | []>(
 		localStorageProgress
