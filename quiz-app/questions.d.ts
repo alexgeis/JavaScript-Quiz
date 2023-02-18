@@ -32,3 +32,5 @@ type TopicProgress = {
 	currQuesIndex: number;
 };
 // PastQuizProgress = TopicProgress[]
+
+type Theme = string;
