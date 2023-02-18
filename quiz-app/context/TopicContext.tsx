@@ -16,22 +16,32 @@ export function TopicProvider({ children }: any) {
 
 	const [topic, setTopic] = useState<string>("");
 	// Persist topic in localStorage
-	useEffect(() => {
-		localStorage.setItem("topic", topic);
-	}, [topic]);
+	// useEffect(() => {
+	// 	if (typeof window !== "undefined") {
+	// 		localStorage.getItem("") ||
+	// 		localStorage.setItem("topic", topic);
+	// 	};
 
-	const [topicQuestions, setTopicQuestions] = useState<Question[] | []>([]);
+	// }, [topic]);
 
-	let localStorageProgress: any = [];
+	// if topic is changed
+	// 	check if topic has already been visited // pull from local storage into a state variable
+	// 	if so pull from old progress
+	// if not,
+
 	if (typeof window !== "undefined") {
-		localStorageProgress = JSON.parse(
-			localStorage.getItem("userQuizProgress") ??
-				'{"topicName":"","questionRefs":"[]","currQuesIndex":"0"}'
+		const userQuizProgress: TopicProgress[] = JSON.parse(
+			localStorage.getItem("userQuizProgress") ||
+				'[{"topicName":"","questionRefs":"[]","currQuesIndex":"0"}]'
+		);
+
+		const topicsVisited = userQuizProgress.map(
+			(topicProgress) => topicProgress.topicName
 		);
 	}
-	const [prevTopics, setPrevTopics] = useState<PrevTopic[] | []>(
-		localStorageProgress
-	);
+
+	const [prevTopics, setPrevTopics] = useState<string[]>();
+	const [topicQuestions, setTopicQuestions] = useState<Question[] | []>([]);
 
 	useEffect(() => {
 		// if topic select page, ignore
