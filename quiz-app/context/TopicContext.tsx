@@ -11,8 +11,9 @@ export function TopicProvider({ children }: any) {
 	// if topic is changed
 	// 	check if topic has already been visited // pull from local storage into a state variable
 	// 	if so pull from old progress
-	// if not,
 
+	// populate prevTopics with all the previous topic names from the userQuizProgress local storage object
+	const [prevTopics, setPrevTopics] = useState<string[]>();
 	if (typeof window !== "undefined") {
 		const userQuizProgress: TopicProgress[] = JSON.parse(
 			localStorage.getItem("userQuizProgress") ||
@@ -22,9 +23,12 @@ export function TopicProvider({ children }: any) {
 		const topicsVisited = userQuizProgress.map(
 			(topicProgress) => topicProgress.topicName
 		);
+		setPrevTopics(topicsVisited);
 	}
 
-	const [prevTopics, setPrevTopics] = useState<string[]>();
+	// const prevQuestions = userQuizProgress.map((topicProgress) => {
+	// 	topicProgress.questionRefs;
+	// });
 	const [topicQuestions, setTopicQuestions] = useState<Question[] | []>([]);
 
 	useEffect(() => {
