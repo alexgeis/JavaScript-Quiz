@@ -6,6 +6,7 @@ type Question = {
 	id: string;
 	categories: string[];
 	text: string;
+	codeText?: string;
 	answers: Answer[];
 	userCorrect: boolean;
 };
